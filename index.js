@@ -38,6 +38,10 @@ function generateInterface(className, input, options) {
 
     var definition = 'interface ' + className + ' {\n';
 
+    if (options.exportInterface) {
+        definition = 'export ' + definition;
+    }
+
     var propertyResult;
     
     var prefixFieldsWithI = options && options.prefixWithI;
