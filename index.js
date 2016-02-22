@@ -1,3 +1,5 @@
+const camelCase = require('camelcase');
+
 var typeTranslation = {};
 
 typeTranslation.int = 'number';
@@ -90,7 +92,11 @@ function generateInterface(className, input, options) {
             }
         }
 
-        definition += '    ' + propertyResult[3];
+        if (options.camelcase) {
+            definition += '    ' + camelCase(propertyResult[3]);
+        } else {
+            definition += '    ' + propertyResult[3];
+        }
         
         if (isOptional) {
             definition += '?';
